@@ -18,7 +18,7 @@ from io import BytesIO
 from fastai.vision import load_learner, torch, open_image
 
 # this my need to be adjusted to contain your learner
-learner = {"dir": ".", "fname": "export.pkl", "model": None, "i2c": None}
+learner = {"dir": "./food_resnet50_model", "fname": "export-50.pkl", "model": None, "i2c": None}
 
 # =========== Helper functions ===========
 
@@ -64,7 +64,7 @@ async def upload(request):
     return predict_image_from_bytes(_bytes)
 
 
-@app.route("/classify_url", methods=["GET"])
+@app.route("/classify-url", methods=["GET"])
 async def classify_url(request):
     _bytes = await get_bytes(request.query_params["url"])
     return predict_image_from_bytes(_bytes)
